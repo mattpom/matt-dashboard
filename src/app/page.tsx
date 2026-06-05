@@ -12,6 +12,26 @@ type ProductRow = { name:string; store:string; type:string; price:string; views:
 type StackRow = { tool:string; category:string; purpose:string; accounts:string; moCost:string; loginEmail:string; renewal:string; status:string; value:string; problems:string; replacement:string; decision:string; notes:string }
 
 const SITES = ['BrokeModeLife.com','StopLookAround.com','FineLivingGuide.com',"Don't Be Hangry",'BrokeHouseCo (Etsy)','Amazon Associates','Pinterest','Instagram','X / Twitter']
+const SITE_URLS: Record<string,string> = {
+  'BrokeModeLife.com': 'https://brokemodelife.com',
+  'StopLookAround.com': 'https://stoplookaround.com',
+  'FineLivingGuide.com': 'https://finelivingguide.com',
+  "Don't Be Hangry": 'https://dontbehangry.com',
+  'BrokeHouseCo (Etsy)': 'https://www.etsy.com/shop/BrokehouseCo',
+  'Amazon Associates': 'https://affiliate-program.amazon.com',
+  'Pinterest': 'https://www.pinterest.com/business/hub/',
+  'Instagram': 'https://www.instagram.com/luxmode.studio',
+  'X / Twitter': 'https://x.com/brokemodelife',
+}
+const PRODUCT_URLS: Record<string,string> = {
+  'Stoicism Planner PDF | Control Your Mind Workbook': 'https://www.etsy.com/listing/4328469688',
+  'Beginner Meditation Guide PDF': 'https://www.etsy.com/listing/4516647880',
+  'Personal Finance Planner Printable / Budget Tracker PDF': 'https://www.etsy.com/listing/4366610820',
+  '30-Day Money Reset Workbook Printable PDF': 'https://www.etsy.com/listing/4502116527',
+  '30-Day Productivity Planner / Accountability Guide': 'https://www.etsy.com/listing/4420901574',
+  'Vision Board Planner Interactive PDF': 'https://www.etsy.com/listing/4418457952',
+  'Benjamin Franklin 13 Virtues Workbook': 'https://www.etsy.com/listing/4423517275',
+}
 const QUALITY = ['—','Poor','Fair','Good','Great']
 const STATUSES = ['Active','Paused','Testing','REVIEW','CANCEL']
 const DECISIONS = ['KEEP','REVIEW','CANCEL']
@@ -36,9 +56,9 @@ const defaultStack = (): StackRow[] => [
   {tool:'Google Analytics 4',category:'Analytics',purpose:'Traffic tracking for all sites',accounts:'All sites',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'5',problems:'',replacement:'',decision:'KEEP',notes:''},
   {tool:'Amazon Associates',category:'Affiliate',purpose:'Affiliate link tracking & commissions',accounts:'All sites',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'5',problems:'',replacement:'',decision:'KEEP',notes:''},
   {tool:'Etsy',category:'Marketplace',purpose:'PDF store — BrokeHouseCo',accounts:'BrokeHouseCo',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Listing fees',status:'Active',value:'5',problems:'',replacement:'',decision:'KEEP',notes:'$0.20/listing + 6.5% tx'},
-  {tool:'Pinterest',category:'Social',purpose:'Visual traffic driver',accounts:'All sites',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'4',problems:'',replacement:'',decision:'KEEP',notes:''},
-  {tool:'Instagram',category:'Social',purpose:'Brand awareness + bio link',accounts:'BrokeModeLife, DBH',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'3',problems:'',replacement:'',decision:'KEEP',notes:''},
-  {tool:'X / Twitter',category:'Social',purpose:'Link sharing + audience',accounts:'BrokeModeLife',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'3',problems:'',replacement:'',decision:'KEEP',notes:''},
+  {tool:'Pinterest',category:'Social',purpose:'Visual traffic driver',accounts:'All sites',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'4',problems:'',replacement:'',decision:'KEEP',notes:'pinterest.com/business/hub'},
+  {tool:'Instagram',category:'Social',purpose:'Brand awareness + bio link',accounts:'luxmode.studio',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'3',problems:'',replacement:'',decision:'KEEP',notes:'instagram.com/luxmode.studio'},
+  {tool:'X / Twitter',category:'Social',purpose:'Link sharing + audience',accounts:'@brokemodelife',moCost:'0',loginEmail:'mattpom01@gmail.com',renewal:'Free',status:'Active',value:'3',problems:'',replacement:'',decision:'KEEP',notes:'x.com/brokemodelife'},
   {tool:'Buffer',category:'Scheduling',purpose:'Social post scheduling',accounts:'Pinterest, IG, X',moCost:'',loginEmail:'mattpom01@gmail.com',renewal:'',status:'REVIEW',value:'3',problems:'',replacement:'Later, Metricool',decision:'REVIEW',notes:'Evaluate cost vs use'},
   {tool:'Make.com',category:'Automation',purpose:'Workflow automation',accounts:'Brevo, Sheets, Etsy',moCost:'',loginEmail:'mattpom01@gmail.com',renewal:'',status:'Active',value:'4',problems:'',replacement:'',decision:'KEEP',notes:''},
   {tool:'Claude / Cowork',category:'AI',purpose:'Primary build partner',accounts:'All projects',moCost:'',loginEmail:'mattpom01@gmail.com',renewal:'',status:'Active',value:'5',problems:'',replacement:'',decision:'KEEP',notes:'Core tool'},
@@ -172,7 +192,7 @@ function TrafficTab({ rows, setRows }: { rows: TrafficRow[]; setRows: (r:Traffic
             {rows.map((r,i)=>(
               <TR key={i} i={i}>
                 <Cell w={70}><Inp value={r.week} onChange={v=>upd(i,'week',v)} placeholder="MM/DD" mono /></Cell>
-                <Cell w={160}><span style={{ color:'var(--text)', fontWeight:500 }}>{r.site}</span></Cell>
+                <Cell w={160}><a href={SITE_URLS[r.site]||'#'} target="_blank" rel="noopener noreferrer" style={{ color:'var(--text)', fontWeight:500, textDecoration:'none', borderBottom:'1px solid var(--border2)' }}>{r.site}</a></Cell>
                 <Cell w={80}><Inp value={r.visitors} onChange={v=>upd(i,'visitors',v)} mono /></Cell>
                 <Cell w={80}><Inp value={r.sessions} onChange={v=>upd(i,'sessions',v)} mono /></Cell>
                 <Cell w={180}><Inp value={r.topPage} onChange={v=>upd(i,'topPage',v)} /></Cell>
@@ -224,7 +244,11 @@ function ProductsTab({ rows, setRows }: { rows: ProductRow[]; setRows: (r:Produc
               const convNum = parseFloat(conv)
               return (
                 <TR key={i} i={i}>
-                  <Cell w={200}><Inp value={r.name} onChange={v=>upd(i,'name',v)} placeholder="Product name" /></Cell>
+                  <Cell w={200}>
+                    {PRODUCT_URLS[r.name]
+                      ? <a href={PRODUCT_URLS[r.name]} target="_blank" rel="noopener noreferrer" style={{ color:'var(--blue)', textDecoration:'none', fontSize:13, fontWeight:500 }}>{r.name}</a>
+                      : <Inp value={r.name} onChange={v=>upd(i,'name',v)} placeholder="Product name" />}
+                  </Cell>
                   <Cell w={120}><Inp value={r.store} onChange={v=>upd(i,'store',v)} /></Cell>
                   <Cell w={80}><Inp value={r.type} onChange={v=>upd(i,'type',v)} /></Cell>
                   <Cell w={70}><Inp value={r.price} onChange={v=>upd(i,'price',v)} placeholder="0.00" mono /></Cell>
