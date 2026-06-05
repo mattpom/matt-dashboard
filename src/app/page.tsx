@@ -19,12 +19,17 @@ const DECISIONS = ['KEEP','REVIEW','CANCEL']
 const defaultTraffic = (): TrafficRow[] => SITES.map(s => ({ week:'',site:s,visitors:'',sessions:'',topPage:'',source:'',amazonClicks:'',amazonRev:'',etsyVisits:'',etsyOrders:'',etsyRev:'',pinterestClicks:'',igClicks:'',xClicks:'',notes:'' }))
 
 const defaultProducts = (): ProductRow[] => [
-  {name:'Rental Property Tracker',store:'BrokeHouseCo',type:'PDF',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'rental property tracker printable',titleQ:'Good',mockupQ:'Good',tagsQ:'Good',updated:'',action:''},
-  {name:'Budget Planner Printable',store:'BrokeHouseCo',type:'PDF',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'budget planner printable',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
-  {name:'Home Maintenance Checklist',store:'BrokeHouseCo',type:'PDF',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'home maintenance checklist pdf',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'Stoicism Planner PDF | Control Your Mind Workbook',store:'BrokeHouseCo',type:'PDF',price:'24.95',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'stoicism planner pdf marcus aurelius',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'Beginner Meditation Guide PDF',store:'BrokeHouseCo',type:'PDF',price:'9.99',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'beginner meditation guide pdf',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'Personal Finance Planner Printable / Budget Tracker PDF',store:'BrokeHouseCo',type:'PDF',price:'19.95',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'personal finance planner printable',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'30-Day Money Reset Workbook Printable PDF',store:'BrokeHouseCo',type:'PDF',price:'14.95',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'30 day money reset workbook printable',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'30-Day Productivity Planner / Accountability Guide',store:'BrokeHouseCo',type:'PDF',price:'19.95',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'30 day productivity planner printable',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'Vision Board Planner Interactive PDF',store:'BrokeHouseCo',type:'PDF',price:'14.95',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'vision board planner printable pdf',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'Benjamin Franklin 13 Virtues Workbook',store:'BrokeHouseCo',type:'PDF',price:'19.95',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'benjamin franklin 13 virtues workbook',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''},
+  {name:'Record Collecting App',store:'BrokeHouseCo',type:'App',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'record collecting app',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:'In Build'},
   {name:'BrokeBites PWA',store:'BrokeBites',type:'App',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'ai meal planner free',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:'In Build'},
   {name:'ListingIQ SEO Tool',store:'ListingIQ',type:'SaaS',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'etsy seo tool',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:'In Build'},
-  ...Array(15).fill(null).map(()=>({name:'',store:'',type:'',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''}))
+  ...Array(10).fill(null).map(()=>({name:'',store:'',type:'',price:'',views:'',visits:'',favs:'',orders:'',revenue:'',keyword:'',titleQ:'',mockupQ:'',tagsQ:'',updated:'',action:''}))
 ]
 
 const defaultStack = (): StackRow[] => [
