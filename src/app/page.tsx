@@ -11,13 +11,14 @@ type TrafficRow = { week:string; site:string; visitors:string; sessions:string; 
 type ProductRow = { name:string; store:string; type:string; price:string; views:string; visits:string; favs:string; orders:string; revenue:string; keyword:string; titleQ:string; mockupQ:string; tagsQ:string; updated:string; action:string }
 type StackRow = { tool:string; category:string; purpose:string; accounts:string; moCost:string; loginEmail:string; renewal:string; status:string; value:string; problems:string; replacement:string; decision:string; notes:string }
 
-const SITES = ['BrokeModeLife.com','StopLookAround.com','FineLivingGuide.com',"Don't Be Hangry",'BrokeHouseCo (Etsy)','Amazon Associates','Pinterest','Instagram','X / Twitter']
+const SITES = ['BrokeModeLife.com','StopLookAround.com','FineLivingGuide.com',"Don't Be Hangry",'BrokeHouseCo (Etsy)','ShirtzAndArtzCo (Etsy)','Amazon Associates','Pinterest','Instagram','X / Twitter']
 const SITE_URLS: Record<string,string> = {
   'BrokeModeLife.com': 'https://brokemodelife.com',
   'StopLookAround.com': 'https://stoplookaround.com',
   'FineLivingGuide.com': 'https://finelivingguide.com',
   "Don't Be Hangry": 'https://dontbehangry.com',
   'BrokeHouseCo (Etsy)': 'https://www.etsy.com/shop/BrokehouseCo',
+  'ShirtzAndArtzCo (Etsy)': 'https://www.etsy.com/shop/ShirtzAndArtzCo',
   'Amazon Associates': 'https://affiliate-program.amazon.com',
   'Pinterest': 'https://www.pinterest.com/business/hub/',
   'Instagram': 'https://www.instagram.com/luxmode.studio',
