@@ -1,7 +1,47 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0d0d0d;
-  color: #e0e0e0;
-  min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080B0F;
+  --bg2: #0D1117;
+  --bg3: #161B22;
+  --bg4: #1C2128;
+  --border: #21262D;
+  --border2: #30363D;
+  --text: #E6EDF3;
+  --text2: #8B949E;
+  --text3: #484F58;
+  --red: #E94560;
+  --green: #3FB950;
+  --yellow: #D29922;
+  --blue: #58A6FF;
+  --orange: #F0883E;
+  --purple: #BC8CFF;
+  --red-bg: #1C0B0F;
+  --green-bg: #0A1F0E;
+  --yellow-bg: #1C1600;
+  --blue-bg: #0A1628;
 }
+
+html { font-size: 14px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* Table defaults */
+table { border-collapse: collapse; width: 100%; }
+input, select { font-family: inherit; }
+button { font-family: inherit; cursor: pointer; }
